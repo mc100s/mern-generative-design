@@ -1,27 +1,32 @@
 import React, { Component } from 'react';
 import api from '../../api';
+import {Link} from 'react-router-dom'
 
 export default class Countries extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      countries: []
+      codeSamples: []
     }
   }
   render() {
     return (
       <div className="Countries">
-        <h2>List of countries</h2>
-        {this.state.countries.map(c => <li key={c._id}>{c.name}</li>)}
+        <h2>List of Code Samples</h2>
+        {this.state.codeSamples.map(c => <div key={c._id}>
+          <Link to={"/code-samples/"+c._id}>
+            {c.name}
+          </Link>
+        </div>)}
       </div>
     );
   }
   componentDidMount() {
-    api.getCountries()
-      .then(countries => {
-        console.log(countries)
+    api.getCodeSamples()
+      .then(codeSamples => {
+        console.log(codeSamples)
         this.setState({
-          countries: countries
+          codeSamples
         })
       })
       .catch(err => console.log(err))

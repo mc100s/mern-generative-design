@@ -63,16 +63,16 @@ export default {
 
   // This is an example on how to use this method in a different file
   // api.getCountries().then(countries => { /* ... */ })
-  getCountries() {
+  getCodeSamples() {
     return service
-      .get('/countries')
+      .get('/codeSamples')
       .then(res => res.data)
       .catch(errHandler)
   },
 
-  addCountry(body) {
+  addCodeSample(body) {
     return service
-      .post('/countries', body)
+      .post('/codeSamples', body)
       .then(res => res.data)
       .catch(errHandler)
   },
